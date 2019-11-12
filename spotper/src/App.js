@@ -1,11 +1,17 @@
-import React, {Component} from 'react';
+import React,{useState,useEffect} from 'react';
 import './App.css';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import SideBar from './components/SideBar/SideBar';
 
-class App extends Component{
-  render() {
+function App(){
+  const [nome, setNome] = useState("Pedro")
+
+  useEffect(()=>{
+
+  },[nome])
+  
     return(
     <div className='App'>
       <div className='app-container'>
@@ -18,14 +24,12 @@ class App extends Component{
           <div className='main-section-container'>
           </div>
         </div>
-
+        <SideBar/>
         <Footer
         />
       </div>
-    </div>);
-  }
-
-
+    </div>
+    );
 }
 
 export default App;
