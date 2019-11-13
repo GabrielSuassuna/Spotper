@@ -26,17 +26,18 @@ const useStyles = makeStyles(theme => ({
     
   },
   drawer: {
-    backgroundColor: #FFFFFF;
     width: drawerWidth,
     flexShrink: 0,
   },
   drawerPaper: {
+
+    backgroundColor: 'black',
     width: drawerWidth,
   },
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'black',
     padding: theme.spacing(3),
   },
 }));
