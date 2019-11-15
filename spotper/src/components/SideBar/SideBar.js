@@ -1,18 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import { blue } from '@material-ui/core/colors';
+import Avatar from '@material-ui/core/Avatar';
+
+import Icon from '../../assets/icon.png'
 
 const drawerWidth = 240;
 
@@ -30,16 +28,24 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
   },
   drawerPaper: {
-
-    backgroundColor: 'black',
+    backgroundColor: '#282828',
     width: drawerWidth,
   },
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    backgroundColor: 'black',
     padding: theme.spacing(3),
   },
+  userIcon:{
+      height: "100%",
+      color: "whitesmoke",
+  },
+  ListItemText:{
+    color: "rgb(170,170,170)",
+    '&:hover': {
+      color: 'whitesmoke'
+    }
+  }
 }));
 
 export default function PermanentDrawerLeft() {
@@ -62,19 +68,16 @@ export default function PermanentDrawerLeft() {
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText classes={{primary: classes.ListItemText}} primary={text} />
             </ListItem>
           ))}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+
+        <ListItem>
+          <Avatar alt="Remy Sharp" src={Icon} className={classes.avatar} />
+          <ListItemText classes={{primary: classes.userIcon}} primary="Pedro Victor" />
+        </ListItem>
       </Drawer>
     </div>
   );

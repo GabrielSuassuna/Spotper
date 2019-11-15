@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import SideBar from './components/SideBar/SideBar';
+import NavBar from './components/NavBar/NavBar'
 
 function App(){
   const [nome, setNome] = useState("Pedro")
@@ -16,7 +17,10 @@ function App(){
     <div className='App'>
       <div className='app-container'>
 
-        <div className='left-side-section'>
+        <SideBar/>
+        <NavBar/>
+
+      {/* <div className='left-side-section'>
         </div>
 
         <div className='main-section'>
@@ -25,8 +29,7 @@ function App(){
           </div>
         </div>
         <SideBar/>
-        <Footer
-        />
+        <Footer/>*/}
       </div>
     </div>
     );
