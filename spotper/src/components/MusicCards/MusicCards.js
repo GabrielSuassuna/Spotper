@@ -1,68 +1,75 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
+import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 245,
-    maxHeight: 245,
+    display: 'flex',
   },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+
+    backgroundColor: '#b3b3b3'
   },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
+  content: {
+    flex: '1 0 auto',
+    backgroundColor: '#b3b3b3'
   },
-  expandOpen: {
-    transform: 'rotate(180deg)',
+  cover: {
+    width: 140,
   },
-  avatar: {
-    backgroundColor: red[500],
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
+  playIcon: {
+    height: 38,
+    width: 38,
   },
 }));
 
-export default function MusicCards() {
+export default function MusicCard() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const theme = useTheme();
 
   return (
     <Card className={classes.card}>
-      {/*
-        <img style={{maxWidth: "240px"},{maxHeight:"200px"},{margin: "5px"}} src = "https://i.scdn.co/image/c301bf63ecd5adeddc8972a8742a5be3b23345ea"/>
-      */}
-      <CardContent>
-        <h2> Milonguita </h2>
-        <h3> Esteban Tavares </h3>
-      </CardContent>
-      
-      
-      <CardActions disableSpacing>
-        
-      </CardActions>
-
+      <div className={classes.details}>
+        <CardContent className={classes.content}>
+          <Typography component="h5" variant="h5">
+            Live From Space
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Mac Miller
+          </Typography>
+        </CardContent>
+        <div className={classes.controls}>
+          <IconButton aria-label="previous">
+            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+          </IconButton>
+          <IconButton aria-label="play/pause">
+            <PlayArrowIcon className={classes.playIcon} />
+          </IconButton>
+          <IconButton aria-label="next">
+            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+          </IconButton>
+        </div>
+      </div>
+      <CardMedia
+        className={classes.cover}
+        image="https://i.scdn.co/image/b93eac6763ccb68ba8f9a7658b4555a40d382128"
+        title="Live from space album cover"
+      />
     </Card>
   );
 }

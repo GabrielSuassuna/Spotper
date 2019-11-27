@@ -9,14 +9,16 @@ function FirstScreen(){
             <h1> Tocadas Recentemente </h1>
 
             <section className="MusicBox">
-                <MusicCards className="MusicCard"/>
-                
-                <MusicCards className="MusicCard"/>
-                
-                <MusicCards className="MusicCard"/>
-                
-                <MusicCards className="MusicCard"/>
-            </section>
+                <section className="MusicExternalCard">
+                    <MusicCards className="MusicCard"/>
+                </section>
+                <section className="MusicExternalCard">
+                    <MusicCards className="MusicCard"/>
+                </section>
+                <section className="MusicExternalCard">
+                    <MusicCards className="MusicCard"/>
+                </section>
+                </section>
             
         </div>
     )

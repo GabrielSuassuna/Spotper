@@ -6,8 +6,11 @@
     flex-wrap: wrap;
 }
 
-.MusicCard{
+.MusicExternalCard{
     margin: 10px;
+}
+
+.MusicCard{
     background-color: tomato;
     text-align: center;
 }
