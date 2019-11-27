@@ -1,0 +1,13 @@
+.MusicBox{
+    max-width: 100%;
+    margin: 20px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.MusicCard{
+    margin: 10px;
+    background-color: tomato;
+    text-align: center;
+}

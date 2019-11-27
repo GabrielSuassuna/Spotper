@@ -6,9 +6,12 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
+
+import HomeIcon from '@material-ui/icons/Home';
+import SearchIcon from '@material-ui/icons/Search';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 import Icon from '../../assets/icon.png'
 
@@ -65,17 +68,35 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText classes={{primary: classes.ListItemText}} primary={text} />
+            <ListItem button key={"Inicio"}>
+              <ListItemIcon> <HomeIcon/> </ListItemIcon>
+              <ListItemText classes={{primary: classes.ListItemText}} primary={"Inicio"} />
             </ListItem>
-          ))}
+            <ListItem button key={"Buscar"}>
+              <ListItemIcon> <SearchIcon/> </ListItemIcon>
+              <ListItemText classes={{primary: classes.ListItemText}} primary={"Buscar"} />
+            </ListItem>
+            <ListItem button key={"SuaBiblioteca"}>
+              <ListItemIcon> <LibraryMusicIcon/> </ListItemIcon>
+              <ListItemText classes={{primary: classes.ListItemText}} primary={"Sua Biblioteca"} />
+            </ListItem>
+
         </List>
         <Divider />
 
+        <List>
+          <ListItem>
+            <ListItemText classes={{primary: classes.ListItemText}}> Playlists</ListItemText>
+          </ListItem>
+
+          <ListItem>
+            <ListItemIcon> <PlaylistAddIcon/> </ListItemIcon>
+            <ListItemText classes={{primary: classes.ListItemText}}> Criar Playlist </ListItemText>
+          </ListItem>
+        </List>
+        
         <ListItem>
-          <Avatar alt="Remy Sharp" src={Icon} className={classes.avatar} />
+          <Avatar  alt="Remy Sharp" src={Icon} className={classes.avatar} />
           <ListItemText classes={{primary: classes.userIcon}} primary="Pedro Victor" />
         </ListItem>
       </Drawer>

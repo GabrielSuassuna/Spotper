@@ -3,8 +3,9 @@ import './App.css';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import NavBar from './components/NavBar/NavBar';
 import SideBar from './components/SideBar/SideBar';
-import NavBar from './components/NavBar/NavBar'
+import Roteador from './components/Roteador/Roteador';
 
 function App(){
   const [nome, setNome] = useState("Pedro")
@@ -18,18 +19,7 @@ function App(){
       <div className='app-container'>
 
         <SideBar/>
-        <NavBar/>
-
-      {/* <div className='left-side-section'>
-        </div>
-
-        <div className='main-section'>
-          <Header />
-          <div className='main-section-container'>
-          </div>
-        </div>
-        <SideBar/>
-        <Footer/>*/}
+        <Roteador/>
       </div>
     </div>
     );
