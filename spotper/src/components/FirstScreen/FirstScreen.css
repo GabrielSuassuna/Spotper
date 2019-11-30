@@ -1,7 +1,6 @@
 .MusicBox{
     max-width: 100%;
-    margin: 20px;
-    border: 1px solid #ccc;
+    margin: 10px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -13,4 +12,14 @@
 .MusicCard{
     background-color: tomato;
     text-align: center;
+}
+
+.Headers h1{
+    margin-left: 20px;
+    font-size: 28px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.36px;
+    display: inline;
+    white-space: nowrap;
 }

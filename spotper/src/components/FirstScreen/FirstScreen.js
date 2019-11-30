@@ -6,7 +6,9 @@ import './FirstScreen.css'
 function FirstScreen(){
     return(
         <div>
-            <h1> Tocadas Recentemente </h1>
+            <section className="Headers">
+                <h1> Tocadas Recentemente </h1>
+            </section>
 
             <section className="MusicBox">
                 <section className="MusicExternalCard">
@@ -18,7 +20,24 @@ function FirstScreen(){
                 <section className="MusicExternalCard">
                     <MusicCards className="MusicCard"/>
                 </section>
+            </section>
+
+            <section className="Headers">
+                <h1> Suas PlayLists </h1>
+            </section>
+
+            <section className="MusicBox">
+                <section className="MusicExternalCard">
+                    <MusicCards className="MusicCard"/>
                 </section>
+                <section className="MusicExternalCard">
+                    <MusicCards className="MusicCard"/>
+                </section>
+                <section className="MusicExternalCard">
+                    <MusicCards className="MusicCard"/>
+                </section>
+            </section>
+            
             
         </div>
     )

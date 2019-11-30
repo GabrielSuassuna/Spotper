@@ -7,11 +7,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
-
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
-import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import QueueIcon from '@material-ui/icons/Queue';
 
 import Icon from '../../assets/icon.png'
 
@@ -90,7 +89,7 @@ export default function PermanentDrawerLeft() {
           </ListItem>
 
           <ListItem>
-            <ListItemIcon> <PlaylistAddIcon/> </ListItemIcon>
+            <ListItemIcon> <QueueIcon/> </ListItemIcon>
             <ListItemText classes={{primary: classes.ListItemText}}> Criar Playlist </ListItemText>
           </ListItem>
         </List>
