@@ -1,21 +1,16 @@
-module.exports = {
-    primeira:{
-        nomeMusica: "Milonga",
+const musicas = [
+    {
+        nome: "Milonga",
         autor: "Esteban Tavares"
     },
-    segunda:{
-        nomeMusica: "Você de volta",
+    {
+        nome: "Você de volta",
         autor: "Esteban Tavares"
     },
-    terceira: {
-        nomeMusica: "Ai Amor",
-        autor: "ANAVITORIA"
-    },
-    quarta:{
-        nomeMusica: "Outrória",
-        autor: "ANAVITORIA"
-    },
-    quinta:{
-        no
+    {
+        nome: "Otário",
+        autor: "Seu Pereira e Coletivo 401"
     }
-}
+]
+
+export default musicas;

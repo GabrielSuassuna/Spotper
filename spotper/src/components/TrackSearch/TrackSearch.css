@@ -1,12 +1,13 @@
 .track-search-container {
 	position: relative;
-	top: 10px;
+	top: 30px;
 }
 
 .track-search-container input {
 	background: #fff;
-	width: 120px;
-	border-radius: 10px;
+	width: 500px;
+	height: 40px;
+	border-radius: 20px;
 	border: none;
   	font-family: 'Proxima Nova', Georgia, sans-serif;
 	padding: 4px 4px 4px 10px;

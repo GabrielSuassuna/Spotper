@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -38,19 +38,22 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function MusicCard() {
+export default function MusicCard(props) {
   const classes = useStyles();
   const theme = useTheme();
 
+  const [nome,setNome] = useState(props.info.nome)
+  const [autor,setAutor] = useState(props.info.autor)
   return (
+    
     <Card className={classes.card}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
-            Live From Space
+            {nome}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-            Mac Miller
+            {autor}
           </Typography>
         </CardContent>
         <div className={classes.controls}>

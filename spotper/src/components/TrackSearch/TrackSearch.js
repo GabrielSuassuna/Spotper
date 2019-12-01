@@ -15,14 +15,19 @@ class TrackSearch extends Component {
 
 	render() {
 	  return(
-	    <div className='track-search-container'>
-	      <form onSubmit={() => { this.props.searchSongs(this.state.searchTerm, this.props.token);}}>
-	        <input onChange={this.updateSearchTerm} type='text' placeholder='Search...' />
-	        <button onClick={(e) => {e.preventDefault()}}>
-	          <i className="fa fa-search search" aria-hidden="true"/>
-	        </button>
-	      </form>
-	    </div>
+		<>
+			<div className='track-search-container'>
+			<form onSubmit={() => { this.props.searchSongs(this.state.searchTerm, this.props.token);}}>
+				<input onChange={this.updateSearchTerm} type='text' placeholder='Search...' />
+				<button onClick={(e) => {e.preventDefault()}}>
+				<i className="fa fa-search search" aria-hidden="true"/>
+				</button>
+			</form>
+			</div>
+
+			
+		
+		</>
 	  );
 	}
 }
