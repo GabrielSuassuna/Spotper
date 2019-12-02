@@ -14,6 +14,8 @@ import QueueIcon from '@material-ui/icons/Queue';
 
 import Icon from '../../assets/icon.png'
 
+import { Link, Redirect } from 'react-router-dom'
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -53,6 +55,10 @@ const useStyles = makeStyles(theme => ({
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
 
+  function buscar(){
+    return <Redirect from='/' to='/search'/>
+  }
+
   return (
     <div className={classes.root}>
 
@@ -73,7 +79,9 @@ export default function PermanentDrawerLeft() {
             </ListItem>
             <ListItem button key={"Buscar"}>
               <ListItemIcon> <SearchIcon/> </ListItemIcon>
-              <ListItemText classes={{primary: classes.ListItemText}} primary={"Buscar"} />
+              <ListItemText classes={{primary: classes.ListItemText}} primary={"Buscar"}>
+                <Link to="/search"/>
+              </ListItemText>
             </ListItem>
             <ListItem button key={"SuaBiblioteca"}>
               <ListItemIcon> <LibraryMusicIcon/> </ListItemIcon>
