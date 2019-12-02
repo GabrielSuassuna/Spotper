@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
+import API from '../../API/API'
 
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
@@ -42,18 +43,23 @@ export default function MusicCard(props) {
   const classes = useStyles();
   const theme = useTheme();
 
-  const [nome,setNome] = useState(props.info.nome)
-  const [autor,setAutor] = useState(props.info.autor)
+  const [descricao,setDescricao] = useState(props.info.descricao)
+  const [tempo,setTempo] = useState(props.info.tempo)
+
+  async function addMusic(){
+      const res = await API.post(`/addMusic/1/${props.num_faixa}/2`)
+  }
+
   return (
     
     <Card className={classes.card}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
-            {nome}
+            {descricao}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-            {autor}
+            {tempo}
           </Typography>
         </CardContent>
         <div className={classes.controls}>
@@ -61,7 +67,7 @@ export default function MusicCard(props) {
             <PlayArrowIcon className={classes.playIcon} />
           </IconButton>
           <IconButton>
-            <PlaylistAddIcon/>
+            <PlaylistAddIcon onClick={()=> addMusic()}/>
           </IconButton>
           
         </div>

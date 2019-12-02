@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
 import MusicCards from '../MusicCards/MusicCards'
 import './FirstScreen.css'
@@ -8,12 +8,26 @@ import AlbumCard from '../AlbumCard/AlbumCard'
 import Musicas from '../../metadata/playlists'
 import Albuns from '../../metadata/albuns'
 
-function FirstScreen(){
+import API from '../../API/API'
 
+function FirstScreen(){
+    const [data,setData] = useState([])
+
+    useEffect(()=>{
+        async function getData(){
+            const res = await API.get('/nomealbum')
+            setData(res.data)
+        }
+        getData()
+    },[])
+
+    
+
+    
     return(
         <div>
             <section className="Headers">
-                <h1> Tocadas recentemente </h1>
+                <button onClick={()=>console.log(data)}><h1> Tocadas recentemente </h1></button>
             </section>
 
             <section className="MusicBox">
@@ -37,7 +51,7 @@ function FirstScreen(){
 
             <section className="MusicBox">
                 {
-                    Albuns.map((album)=>{
+                    data.map((album)=>{
                         return(
                         <section className="MusicExternalCard">
                             <AlbumCard 

@@ -1,13 +1,12 @@
 const express = require('express')
+const cors = require('cors')
+
+const routes = require('./routes')
+
 const app = express()
 
-app.get('/',async function(req,res){
+app.use(cors())
 
-    const sql = require('mssql')
-
-    await sql.connect('mssql://teste:teste@localhost/database')
-    const result = await sql.query`select * from mytable`
-    console.dir(result)
-})
+app.use(routes)
 
 app.listen(3333)

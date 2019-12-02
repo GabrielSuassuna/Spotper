@@ -17,7 +17,8 @@ const useStyles = makeStyles({
 export default function ImgMediaCard(props) {
   const classes = useStyles();
 
-  const [nome,setNome] = useState(props.info.nome)
+  const [tipoCompra,setTipoCompra] = useState(props.info.tipo_compra)
+  const [preco,setPreco] = useState(props.info.preco)
   const [descricao,setDescricao] = useState(props.info.descricao)
 
   return (
@@ -32,10 +33,10 @@ export default function ImgMediaCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {nome}
+            {descricao}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {descricao}
+            {"Tipo: "+tipoCompra+" Preço: "+preco}
           </Typography>
         </CardContent>
       </CardActionArea>

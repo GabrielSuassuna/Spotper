@@ -27,3 +27,21 @@ button {
 	border: none;
 	outline: none;
 }
+
+.musicContainer{
+	
+		max-width: 100%;
+		margin: 10px;
+		display: flex;
+		flex-wrap: wrap;
+	
+}
+
+.MusicExternalCard{
+    margin: 10px;
+}
+
+.MusicCard{
+    background-color: tomato;
+    text-align: center;
+}

@@ -1,35 +1,52 @@
-import React, { Component } from 'react';
+import React, {useState,useEffect} from 'react';
 import './TrackSearch.css';
 
-class TrackSearch extends Component {
+import MusicCard from '../MusicCards/MusicCards'
 
-	state = {
-	  searchTerm: ''
-	};
+import API from '../../API/API'
 
-	updateSearchTerm = (e) => {
-	  this.setState({
-	    searchTerm: e.target.value
-	  });
+function TrackSearch(){
+
+	const [search,setSearch]= useState('')
+	const [data,setData] = useState([])
+
+    useEffect(()=>{
+        async function getData(){
+            const res = await API.get('/showallmusic')
+            setData(res.data)
+        }
+        getData()
+    },[])
+
+	function updateSearchTerm(e){
+		setSearch(e.target.value)
 	}
 
-	render() {
 	  return(
 		<>
 			<div className='track-search-container'>
-			<form onSubmit={() => { this.props.searchSongs(this.state.searchTerm, this.props.token);}}>
-				<input onChange={this.updateSearchTerm} type='text' placeholder='Search...' />
+			<form>
+				<input onChange={()=>console.log(data)} type='text' placeholder='Search...' />
 				<button onClick={(e) => {e.preventDefault()}}>
 				<i className="fa fa-search search" aria-hidden="true"/>
 				</button>
 			</form>
 			</div>
-
-			
-		
+			{
+				data.map((music)=>{
+					return(
+					<section className="musicContainer">
+						<section className="MusicExternalCard">
+							<MusicCard className="MusicCard" 
+							info = {music}/>
+						</section>
+					</section>	
+						
+					)
+				})
+			}
 		</>
 	  );
-	}
 }
 
 export default TrackSearch;

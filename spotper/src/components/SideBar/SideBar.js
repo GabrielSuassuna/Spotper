@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -15,6 +15,8 @@ import QueueIcon from '@material-ui/icons/Queue';
 import Icon from '../../assets/icon.png'
 
 import { Link, Redirect } from 'react-router-dom'
+
+import API from '../../API/API'
 
 const drawerWidth = 240;
 
@@ -59,6 +61,17 @@ export default function PermanentDrawerLeft() {
     return <Redirect from='/' to='/search'/>
   }
 
+  const [data,setData] = useState([])
+
+  useEffect(()=>{
+    async function getData(){
+      const res = await API.get('/allplaylist')
+      setData(res.data)
+    }
+    getData()
+  })
+
+
   return (
     <div className={classes.root}>
 
@@ -79,9 +92,12 @@ export default function PermanentDrawerLeft() {
             </ListItem>
             <ListItem button key={"Buscar"}>
               <ListItemIcon> <SearchIcon/> </ListItemIcon>
-              <ListItemText classes={{primary: classes.ListItemText}} primary={"Buscar"}>
-                <Link to="/search"/>
-              </ListItemText>
+              <Link to ='search'>
+              <ListItemText classes={{primary: classes.ListItemText}} primary={"Buscar"}/>
+      </Link>
+              {/*<ListItemText classes={{primary: classes.ListItemText}} primary={"Buscar"}/>
+              */}
+              
             </ListItem>
             <ListItem button key={"SuaBiblioteca"}>
               <ListItemIcon> <LibraryMusicIcon/> </ListItemIcon>
@@ -100,6 +116,18 @@ export default function PermanentDrawerLeft() {
             <ListItemIcon> <QueueIcon/> </ListItemIcon>
             <ListItemText classes={{primary: classes.ListItemText}}> Criar Playlist </ListItemText>
           </ListItem>
+          
+            {data.map((info)=>{
+              return(
+                <ListItem>
+                <Link to={"/album/"+info.cod}>
+                  <ListItemText classes={{primary: classes.ListItemText}}> {info.nome} </ListItemText>
+                </Link>
+                
+              </ListItem>
+              )
+            })}
+            
         </List>
         
         <ListItem>
