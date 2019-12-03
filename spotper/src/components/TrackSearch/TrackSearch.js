@@ -15,24 +15,29 @@ function TrackSearch(){
             const res = await API.get('/showallmusic')
             setData(res.data)
         }
-        getData()
-    },[])
+		getData()
+		
+    })
 
-	function updateSearchTerm(e){
-		setSearch(e.target.value)
+	async function updateSearchTerm(term){
+		setSearch(term)
+		const res = await API.get(`/getbysearch/${term}`)
+		setData(res.data)
 	}
 
 	  return(
 		<>
-			<div className='track-search-container'>
+			<section className='track-search-container'>
 			<form>
-				<input onChange={()=>console.log(data)} type='text' placeholder='Search...' />
-				<button onClick={(e) => {e.preventDefault()}}>
+				<input onChange={(e)=>updateSearchTerm(e.target.value)} type='text' placeholder='Search...' />
+				<button type="submit" onClick={(e) => {e.preventDefault()}}>
 				<i className="fa fa-search search" aria-hidden="true"/>
 				</button>
 			</form>
-			</div>
-			{
+			</section>
+
+		<section>
+		{
 				data.map((music)=>{
 					return(
 					<section className="musicContainer">
@@ -45,6 +50,8 @@ function TrackSearch(){
 					)
 				})
 			}
+		</section>
+			
 		</>
 	  );
 }

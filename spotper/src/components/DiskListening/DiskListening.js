@@ -16,7 +16,6 @@ function DiskListening(props){
 
     useEffect(()=>{
       async function getData(){
-        //console.log(props.history.location.pathname)
         let params = props.history.location.pathname
         const id = params.slice(7)
         const res = await API.get('/showplaylisttrack/'+id)
@@ -25,10 +24,23 @@ function DiskListening(props){
       getData()
     })
     
-    
+    async function updateListened(musica){
+        let params = props.history.location.pathname
+        const codplay = params.slice(7)
+        const cod_album = musica.cod_album
+        const num_faixa = musica.num_faixa
+        const res = await API.post('/updatetocadas/'+codplay+'/'+num_faixa+'/'+cod_album)
+        alert('Dar f5 pode ou não ser necessario para renderizar mudanças')
+        return res
+    }
 
-    async function deleteTrack(){
-        const res = await API.post('/deletetrack/2/1/1')
+    async function deleteTrack(musica){
+        let params = props.history.location.pathname
+        const codplay = params.slice(7)
+        const cod_album = musica.cod_album
+        const num_faixa = musica.num_faixa
+        const res = await API.post('/deletetrack/'+cod_album+'/'+num_faixa+'/'+codplay)
+        alert('Dar f5 pode ou não ser necessario para renderizar mudanças')
         return res
     }
 
@@ -43,14 +55,14 @@ function DiskListening(props){
                     return(
                         <section className="musicItem">
                             <section className="musicItemContainer">
-                                <PlayArrowIcon className="playButton"/>
-                                <DeleteOutlineIcon onClick={()=> deleteTrack()}className="playButton"/>
+                                <PlayArrowIcon onClick={()=>updateListened(musica)} className="playButton"/>
+                                <DeleteOutlineIcon onClick={()=>deleteTrack(musica)}className="playButton"/>
                                 <section className="musicInfo">
                                     <section className="musicItemTitle"> <p> {musica.descricao} </p></section>
-                                    <section className="musicItemAutor"> <p> {musica.num_faixa} </p></section>
+                                    <section className="musicItemAutor"> <p> Nº: {musica.num_faixa} Nº tocadas: {musica.vezes_tocada} </p></section>
                                 </section>
                                 <section className="tempo">
-                                    <p> {musica.tempo} </p>
+                                    <p> Tempo: {musica.tempo} </p>
                                 </section>
                             </section>     
                         </section>

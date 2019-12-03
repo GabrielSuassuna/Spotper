@@ -13,5 +13,6 @@ routes.get('/showallmusic',PlaylistController.showAllMusics)
 routes.post('/addmusic/:cod_play/:num_faixa/:cod_album',PlaylistController.addMusic)
 routes.post('/createplaylist/:nome', PlaylistController.createPlayList)
 routes.post('/updatetocadas/:cod_play/:num_faixa/:cod_album',PlaylistController.updateTocadas)
+routes.get('/getbysearch/:search',PlaylistController.getBySearch)
 
 module.exports = routes

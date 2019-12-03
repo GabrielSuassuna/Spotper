@@ -47,7 +47,8 @@ export default function MusicCard(props) {
   const [tempo,setTempo] = useState(props.info.tempo)
 
   async function addMusic(){
-      const res = await API.post(`/addMusic/1/${props.num_faixa}/2`)
+    alert("Sinto muito, vá até Spotper>src>components>MusicCard.js>addmusic() e insira na url os parametros cod_playlist/num_faixa/cod_album")
+    const res = await API.post(`/addMusic/1/${props.num_faixa}/2`)
   }
 
   return (
